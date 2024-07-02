@@ -116,10 +116,10 @@ A summary of the model key model assumptions and parameters for the Stock Synthe
 ```{r}
 block_section(op_section) # open section
 ```
+ <!--las tablas las debo generar en el archivo report_run-->
+Table `r #run_bookmark("tab_input", tabruns.start)`: anchovy southern component: Input data for SS3.
 
-Table `r run_bookmark("tab_input", tabruns.start)`: anchovy southern component: Input data for SS3.
-
-```{r}
+```{r eval=FALSE}
 # Table 3.5.1.1
 ft1 <- set_table_properties(ft1, layout = "autofit")
 ft1 <- fontsize(ft1, size=9, part = 'all')
