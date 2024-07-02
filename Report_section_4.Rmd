@@ -1,0 +1,116 @@
+---
+output:
+  word_document:
+    fig_caption: yes
+    reference_docx: "boot/data/sec_04_template.docx"
+    toc: true
+bibliography: "report_biblio.bib"
+csl: "boot/data/ices-journal-of-marine-science.csl"
+---
+
+# Anchovy in Division 9.a
+
+## ACOM Advice Applicable to the management period **month year** – **month year**
+
+## Population structure and stock identity
+
+## The fishery in **year**
+
+### Fishing fleets
+
+### Catches by stock component and division
+
+#### Catches in Division 9.a
+
+#### Catches by stock component
+
+### Discards
+
+### Effort and landings per unit of effort
+
+### Catches by length and catches-at-age by stock component
+
+#### Length distributions
+
+#### Catch numbers-at-age
+
+### Mean length and mean weight-at-age in the catch
+
+## Fishery-independent Information
+
+### DEPM-based SSB estimates
+
+### Spring/summer acoustic surveys
+
+### Recruitment surveys
+
+## Biological data
+
+### Weight-at-age in the stock
+
+### Maturity-at-Age
+
+### Natural mortality
+
+## Stock Assessment
+
+### Western component
+
+### Southern component
+
+## Reference points
+
+### Western component
+
+### Southern component
+
+## State of the Stock
+
+### Western component
+
+### Southern component
+
+## Catch scenarios
+
+### Western component
+
+### Southern component
+
+## Short-term projections
+
+## Quality of the assessment
+
+## Management considerations
+
+## Ecosystem considerations
+
+## Deviations from stock annex caused by missing information from Covid-19 disruption	
+
+## References
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

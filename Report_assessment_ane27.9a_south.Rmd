@@ -1,0 +1,168 @@
+---
+output:
+  word_document:
+    fig_caption: yes
+    reference_docx: "boot/data/sec_04_template.docx"
+    toc: true
+bibliography: "report_biblio.bib"
+csl: "boot/data/ices-journal-of-marine-science.csl"
+---
+
+```{r pkgs, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(icesAdvice)
+library(flextable)
+library(FLCore)
+library(officedown)
+library(officer)
+library(TAF)
+```
+
+```{r setup, knitr, echo=FALSE, message=FALSE, warning=FALSE}
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.pos='!hbt')
+
+# To print the inline numbers using normal notation and not scientific notation.
+options(scipen=999)
+
+```
+
+```{r caption_settings}
+tabruns.start <- list(
+  # run_word_field("STYLEREF 2 \\s"), 
+  # ftext("."),
+  run_autonum(seq_id = "Table", pre_label = "", post_label = "", tnd=4, tns=".", start=1)
+)
+
+tabruns <- list(
+  run_autonum(seq_id = "Table", pre_label = "", post_label = "", tnd=4, tns=".")
+)
+
+figruns.start <- list(
+  run_autonum(seq_id = "Figure", pre_label = "", post_label = "", tnd=4, tns=".", start=1)
+)
+
+figruns <- list(
+  run_autonum(seq_id = "Figure", pre_label = "", post_label = "", tnd=4, tns=".")
+)
+```
+
+
+```{r officer_landscape}
+op_section <- prop_section(type = "continuous")
+close_section <- prop_section(
+    page_size = page_size(orient = "landscape"), 
+    type = "continuous")
+```
+
+
+
+```{r load}
+load("data/inputData.RData") 
+#load("report/tables_run.RData")
+#load("report/tables_stf.RData")
+
+#refpts <- read.csv("data/refpts.csv")
+
+# years are not correctly updated in the text yet, this version needs to be updated manually in word
+# this .rmd will be improved for next year
+ass_y<-2024
+next_y<-ass_y +1
+prev_y<-ass_y-1
+
+```
+# Anchovy 27.9a southern component
+
+## Introduction
+
+## Methodology
+
+### Data input
+
+### Biological data
+
+### Stock Assessment
+
+#### Model assumptions and setting and parameter estimates
+
+The assessment of the **southern anchovy southern component** was performed in Stock Synthesis software, version 3.30.19 (**insertar cita Methot et al., 2023**) under the MAC platform. SS is a generalized age and/or length-based model that is very flexible with regard to the types of data that may be included, the functional forms that are used for various biological processes, the level of complexity and number of parameters that may be estimated. The model is coded in C++ with parameter estimation enabled by automatic diferentitation (**incluir link www.admb-project.org**) and available at the NOAA Fisheries integrated toolbox: https://noaa-fisheries-integrated-toolbox.github.io/SS3. A description and discussion of the model can be found in **incluir cita Methot and Wetzel (2013)**.
+
+The stock assessment has been performed for the period 1989-2024 with **the method and settings agreed during the bechmark (ICES, 2024)**. The **southern anchovy southern component** assessment model is a one area, annual with data in quarters, age-based model where the population is comprised of 3+ age-classes (with age 3 representing a plus group) with sexes combined (male and females are modelled together).
+
+Input data include total catch (in biomass), length composition of the catch (in numbers), abundance (in biomass) and length composition  from an annual *PELAGO*, *ECOCADIZ*, *ECOCADIZ-RECLUTAS* surveys, and spawning-stock biomass (SSB) from triennial DEPM *BOCADEVA* survey. **Considering the assessment calendar (annual assessment WG in November in year y+1), all data included in the assessment are up to year y**. According to the ICES terminology, year y is the final year.
+
+Natural mortality are age-specific input values <!--(and weights-at-age and maturity-at-age) --> in the beginning of the year are input values estimated from external data (**Sections xxx to xxx**).  Growth is not modelled explicitly <!--Check if the growth estimate is accurate and update if necessary-->. Annual recruitments are parameters, defined as lognormal deviations from **Beverton-Holt** stock-recruitment model with steepness fixed at **XX** <!-- Check and update if necessary--> and standard deviation of log number of recruits was set to **0.6** <!-- Check and update if necessary-->, the same as in the previous model and based on literature for similar species <!-- Check and update if necessary-->. Fishing mortality is applied as the hybrid method does a Pope´s approximation to provide initial values for iterative adjustment of the continuous F values to closely approximate the observed catch. Total catch biomass by year is assumed to be accurate and precise. The F values are tuned to match this catch. The *PELAGO*, *ECOCADIZ*, *ECOCADIZ-RECLUTAS* surveys, and spawning-stock biomass (SSB) from triennial DEPM *BOCADEVA* survey are assumed to be relative indices of abundance. The catchability are modelled with a simple $q$ linear model.
+
+
+The fishery selectivity was set as a logistic function fixed over time... <!-- se usan bloques de selectividad--> (**Figure xx**).  In 
+*PELAGO*, *ECOCADIZ*, *ECOCADIZ-RECLUTAS* surveys was set as a logistic function fixed over time (**Figure xx**). A standar error of 0.10 was assumed for all years of catches and 0.3 for the *PELAGO*, *ECOCADIZ*, *ECOCADIZ-RECLUTAS* surveys, and spawning-stock biomass (SSB) from triennial DEPM *BOCADEVA* survey, reflecting the accurate sampled catches and the CV level of the surveys. A standard error of 0.4 is assumed for all years for the DEPM index based on the uncertainty of the SSB estimates.
+
+
+The Francis method T.A.xxx was selected for length data weighting in catches and surveys data. The initial population is calculated by estimating an initial equilibrium population modified by age composition data in the first year of the assessment (**Methot and Wetzel, 2013**). The model starts in 1989 and the equilibrium population age structure was assumed to be in an exploited state with an initial <!--**catch of 30 000 tonnes – corresponding to the average Portuguese catches previous 5 years (1987-91) + average Spain catches first 5 years of data (1992-96)**-->. Variance estimates for all estimated parameters are calculated from the Hessian matrix. Minimisation of the likelihood is implemented in phases using standard ADMB process. The phases in which estimation will begin for each parameter is shown in the control file available in the TAF repository for this stock <!--(https://github.com/ices-taf/2024_hom.27.9a_assessment)-->. The R packages r4ss version 1.49.2 (**Taylor et al., 2021**) and ss3diags version 1.10.2 (**Carvalho et al., 2021**) were used to process and view model outputs. All analyses were conduction in R version 4.2.2 <!--revisar versiones-->
+
+Figure `r run_reference("input_data")` summarises data presence by year, where circle area is relative within a data type. Circles are proportional to total catch for catches, to precision for indices and to total sample size for compositions.
+
+```{r}
+# Figure 3.5.1.2
+include_graphics(file.path("report/run/input_data.png"))
+```
+
+Figure `r run_bookmark("input_data", figruns)`: Summary of inputs and data year ranges for assessment (1989-2024).
+
+
+
+A summary of the model key model assumptions and parameters for the Stock Synthesis is available in **Table 4.4.1.1**
+
+<!-- In this example, the text that needs to be reviewed and updated is marked in bold. -->
+```{r}
+block_section(op_section) # open section
+```
+
+Table `r run_bookmark("tab_input", tabruns.start)`: anchovy southern component: Input data for SS3.
+
+```{r}
+# Table 3.5.1.1
+ft1 <- set_table_properties(ft1, layout = "autofit")
+ft1 <- fontsize(ft1, size=9, part = 'all')
+ft1
+```
+
+\newpage
+
+## Results
+
+### Diagnostic 
+#### Fit and residuals
+
+
+#### Restrospective
+
+
+### Time series
+
+The estimated SSB shows an increase from xxx to xxx <!--years--> from xxx thousand tonnes to xxx thousand tonnes. Confidence intervals of SSB are in the range xx-xx% with an average xx%.
+
+The fishing mortality has been ~~relatively stable over the whole time-series and after the slight increase in 2016~~, showed a decrease in ~~2017-2023~~. F0-3 in 2024 was estimated at ~~0.050~~  ~~lower~~ than the observed value in 2023 (~~0.055~~). Confidence intervals of F with an average of ~~14~~%.
+
+The uncertainty in SSB in the most recent years is around ~~17~~%. The lack of the combined surveys index could add uncertainty in the present spawning biomass estimates. However, the new assessment shows lower uncertainty when compared to previous model. The slight decrease in catches observed in 2024 and the increase in estimated stock abundance resulted in a lower estimate of F in 2024 than in the previous year. The uncertainty in the estimated Fbar is of similar magnitude around ~~11~~% for the entire period.
+
+The stock shows a strong recruitment in ~~1996~~ and average recruitments in the most recent years, with some peaks in ~~2011, 2012, 2017 and 2022~~.
+
+Recruitment estimates in the more recent years presents uncertainty as showed in the confidence bars. In 2023, recruitment showed a decrease and was estimated at ~~330~~ million individuals.
+
+
+### Reference points
+
+### State of the Stock
+
+
+
+### Catch scenarios
+
+
+
+### Short-term projections
+
+
+## Conclusion
+
+## References

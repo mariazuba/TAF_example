@@ -32,6 +32,20 @@ spaly <- r4ss::SS_output(dir = dir.spaly,forecast=FALSE)
 
 r4ss::SS_plots(replist = spaly, dir = res.plots)
 
+# summary table of data
+
+
+tab.pop <-catch
+
+
+write.taf(tab.pop, file="output/run/catch.csv")
+
+# Save tables -------------------------------------------------------------
+
+save(tab.pop, file="output/run/output_run.RData")
+
+# End of script -----------------------------------------------------------
+
 # End of script -----------------------------------------------------------
 
 rm(list=ls())
